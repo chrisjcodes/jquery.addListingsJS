@@ -39,7 +39,7 @@ This allows you to set the number of listings returned per page
 This allows you to set which page of listings were calling. So if we had 24 listings and we set listingCount to 12, setting pageNumber to 2 would return listings 13-24.
 
 ### customTemp
-This allows you to tell the plugin which pieces of data to return and how to mark them up. We are using the jQuery tmpl engine for this so to call a piece of data you use the name from JSON and wrap it as so *(This is CASE SENSITIVE)*:
+This allows you to tell the plugin which pieces of data to return and how to mark them up. We are using the jQuery tmpl engine for this so to call a piece of data you use the name from JSON and wrap it as so **(This is CASE SENSITIVE)**:
 
 ```
 ${Address}
@@ -53,7 +53,7 @@ $("#listings").addListings({
 	customTemp: "<div class='zip'>${Zip}</div>", //string
 });
 ```
-Its important to note that you must use single quotes inside the template such as **class='zip'** or escape any double quotes **class=\"zip\"**
+Its important to note that you must use single quotes inside the template such as *class='zip'* or escape any double quotes *class=\"zip\"*
 
 
 I will provide a sample JSON file with all the available data you can call
@@ -64,9 +64,9 @@ This is a call back function that allows you to run any code on the data that is
 ```
 $("#listings").addListings({
 	after: function(){
-	$(this).bxSlider();
-}
+		$(this).bxSlider();
+	}
 });
 ```
 
-This *has* to be done this way because the items dont exist in the DOM until after the plugin runs.
+This has to be done this way because the items dont exist in the DOM until after the plugin runs.
