@@ -1,6 +1,3 @@
-// This will give you 20 items: '/api/listings/?featuredlistings=1&pagesize=20'
-// This will give you the 2nd set of 10 items: '/api/listings/?featuredlistings=1&pagesize=10&pagenumber=2'
-
 (function( $ ) {
 
 $.fn.addListings = function(options){
