@@ -21,8 +21,7 @@ $.fn.addListings = function(options){
 
 	$.ajax({
       type: 'GET',
-      // url: '/api/listings/?featuredlistings=1&pagesize=' + settings.listingCount + '&pagenumber=' + settings.pageNumber + '',
-      url:'data.json',
+      url:'/api/listings/?featuredlistings=1&pagesize=' + listingCount + '&pagenumber=' + pageNumber + '',
       contentType: 'text/plain',
       crossDomain: true,
       context: $(this)
@@ -30,9 +29,13 @@ $.fn.addListings = function(options){
 	.done(function(data) {
 		$.template("customTemp", settings.customTemp);
         var arrData = $.map(data[0], function(el) { return el; });
-        for(i=0; i<arrData.length; i++){
-	        $.tmpl("customTemp", arrData[i]).appendTo(this);
-	  	}
+        if(arrData.length == 0){
+        	console.log("No Listings Returned");
+        } else{
+	        for(i=0; i<arrData.length; i++){
+		        $.tmpl("customTemp", arrData[i]).appendTo(this);
+		  	}
+        }
 
       })
 	.always(function(){
