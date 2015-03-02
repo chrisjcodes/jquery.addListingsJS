@@ -57,6 +57,7 @@
 
 	</style>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="jquery.tmpl.min.js"></script>
 		<script src="jquery.addListings.js"></script>
 </head>
 <body>
@@ -65,11 +66,7 @@
 <div class="clear"></div>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#listings").addListings({
-			after:function(){
-				$(".listing").addClass("test");
-			}
-		});
+		$("#listings").addListings().addClass("2chains");
 	});
 
 

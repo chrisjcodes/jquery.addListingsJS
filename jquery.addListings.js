@@ -4,11 +4,16 @@
 (function( $ ) {
 
 $.fn.addListings = function(options){
-    var myHTML = "",
-    template = "";
 	var defaults = {
 		listingCount: 25,
 		pageNumber: 1,
+		customTemp: "<div class='listing'>\
+		<img src='${IDXPhotoRef}'/>\
+		<div class='address'>${Address}</div>\
+		<div class='beds'> Beds: ${BedRooms}</div>\
+		<div class='baths'>Baths: ${BathRooms}</div>\
+		<div class='price'>Price: $${PriceFormatted}</div>\
+		</div>",
 		after: function(){}
 	}
 
@@ -16,26 +21,18 @@ $.fn.addListings = function(options){
 
 	$.ajax({
       type: 'GET',
-      // url: '/api/listings/?featuredlistings=1&pagesize=' + listingCount + '&pagenumber=' + pageNumber + '',
-      url: 'data.json',
+      // url: '/api/listings/?featuredlistings=1&pagesize=' + settings.listingCount + '&pagenumber=' + settings.pageNumber + '',
+      url:'data.json',
       contentType: 'text/plain',
       crossDomain: true,
       context: $(this)
       })
 	.done(function(data) {
+		$.template("customTemp", settings.customTemp);
         var arrData = $.map(data[0], function(el) { return el; });
         for(i=0; i<arrData.length; i++){
-	            var template = "<div class=\"listing\">" +
-	          "<img src=\"" + arrData[i].IDXPhotoRef + "\"/>" +
-	          "<div class=\"address\">" + arrData[i].Address + "</div>" +
-	          "<div class=\"beds\"> Beds:" + arrData[i].BedRooms + "</div>" +
-	          "<div class=\"baths\">Baths:" + arrData[i].BathRooms + "</div>" +
-	          "<div class=\"price\">Price: $" + arrData[i].PriceFormatted + 
-	          "</div></div>";
-	          myHTML += (template);
-	  		}
-	  		
-        return this.append(myHTML);
+	        $.tmpl("customTemp", arrData[i]).appendTo(this);
+	  	}
 
       })
 	.always(function(){
@@ -44,4 +41,7 @@ $.fn.addListings = function(options){
 
 };
 
+return this;
+
 }( jQuery ));
+
