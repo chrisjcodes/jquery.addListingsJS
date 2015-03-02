@@ -10,7 +10,7 @@ Include the following files in the **scripts** to use the addListings plugin. Yo
 "/CustomData/CUSTOMERID/js/jquery.addListings.js"
 ```
 
-Then to initiate all the following script:
+Then to initiate add the following script:
 
 
 ```
