@@ -39,9 +39,9 @@ $.fn.addListings = function(options){
       	settings.after();
       });
 
-};
-
+console.log(this);
 return this;
 
+};
 }( jQuery ));
 
