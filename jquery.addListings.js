@@ -18,7 +18,7 @@ $.fn.addListings = function(options){
 
 	$.ajax({
       type: 'GET',
-      url:'/api/listings/?featuredlistings=1&pagesize=' + listingCount + '&pagenumber=' + pageNumber + '',
+      url:'/api/listings/?featuredlistings=1&pagesize=' + settings.listingCount + '&pagenumber=' + settings.pageNumber + '',
       contentType: 'text/plain',
       crossDomain: true,
       context: $(this)
